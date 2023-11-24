@@ -27,9 +27,9 @@ SECRET_KEY = env("SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
-# Application definition
-
-INSTALLED_APPS = [
+# APPS
+# ------------------------------------------------------------------------------
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+LOCAL_APPS = [
+    "src.common",
+]
+# https://docs.djangoproject.com/en/4.2/ref/settings/#installed-apps
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
