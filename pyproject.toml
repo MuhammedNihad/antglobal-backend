@@ -14,7 +14,6 @@ exclude = '''
     | dist
 )/'''
 
-
 [tool.isort]
 profile = "black"
 multi_line_output = 3
@@ -22,3 +21,21 @@ multi_line_output = 3
 [tool.bandit]
 exclude_dirs = ["*/venv/*", "tests"]
 skips = ["B201", "B104", "B105", "B106", "B311", "B608"]
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+ignore_missing_imports = true
+namespace_packages = false
+check_untyped_defs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+
+
+[[tool.mypy.overrides]]
+# Django migrations should not produce any errors:
+module = "*.migrations.*"
+ignore_errors = true
+
+[tool.django-stubs]
+django_settings_module = "config.settings.development"
