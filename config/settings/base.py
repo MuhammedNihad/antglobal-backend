@@ -40,6 +40,7 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     "src.common",
+    "src.accounts",
 ]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
@@ -111,6 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Extend custom user model
+# https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
+AUTH_USER_MODEL = "accounts.CustomUser"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
