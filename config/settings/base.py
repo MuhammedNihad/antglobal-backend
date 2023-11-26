@@ -34,6 +34,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     "src.common",
     "src.accounts",
+    "src.products",
 ]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
