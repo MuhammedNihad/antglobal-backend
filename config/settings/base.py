@@ -20,13 +20,6 @@ environ.Env.read_env(os.path.join(BASE_DIR / "settings", ".env"))
 # https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = env.bool("DEBUG", False)
 
-# Raises Django's ImproperlyConfigured
-# exception if SECRET_KEY not in os.environ
-SECRET_KEY = env("SECRET_KEY")
-
-# https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
-
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
@@ -75,24 +68,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
-
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# Parse database connection url strings
-# like psql://user:pass@127.0.0.1:8458/db
-DATABASES = {
-    # read os.environ['DATABASE_URL'] and raises
-    # ImproperlyConfigured exception if not found
-    #
-    # The db() method is an alias for db_url().
-    "default": env.db(),
-    # read os.environ['SQLITE_URL']
-    "extra": env.db_url(
-        "SQLITE_URL", default="sqlite:////tmp/my-tmp-sqlite.db"
-    ),
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
