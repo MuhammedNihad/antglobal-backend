@@ -31,13 +31,17 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
+THIRD_PARTY_APPS = [
+    "django_extensions",
+]
+
 LOCAL_APPS = [
     "src.common",
     "src.accounts",
     "src.products",
 ]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
 MIDDLEWARE = [

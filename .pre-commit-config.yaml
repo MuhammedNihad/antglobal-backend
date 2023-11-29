@@ -41,7 +41,7 @@ repos:
     -   id: mypy
         files: ^src/
         args: [--strict]
-        additional_dependencies: [django-stubs, django-environ, "psycopg[binary]"]
+        additional_dependencies: [django-stubs, django-environ, "psycopg[binary]", django-extensions]
 
 -   repo: https://github.com/PyCQA/bandit
     rev: 1.7.5
