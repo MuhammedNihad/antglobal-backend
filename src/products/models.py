@@ -184,7 +184,7 @@ class ProductImage(BaseModel, Model):  # type: ignore
     """
 
     # relations
-    product = OneToOneField(
+    product = ForeignKey(
         ProductItem,
         on_delete=CASCADE,
         related_name="images",
