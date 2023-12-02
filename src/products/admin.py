@@ -1,4 +1,5 @@
 from django.contrib.admin import TabularInline, register
+from django.utils.html import format_html
 
 from src.common.admin import BaseAdmin, SaveModelAdmin
 
@@ -30,6 +31,24 @@ class ProductImageInline(TabularInline):  # type: ignore
     model = ProductImage
     exclude = ["updated_by"]
     view_on_site = False
+    readonly_fields = ("image_preview",)
+
+    def image_preview(self, obj) -> str:  # type: ignore
+        """
+        Custom method to display product item image preview in the Django admin.
+
+        Returns:
+            str: An HTML string containing an image tag displaying the image preview,
+            or a string indicating the absence of an image if 'obj.images' is empty.
+        """
+        if obj.images:
+            return format_html(
+                f"<img src='{obj.images.url}' style='object-fit:contain; max-width:200px; max-height:200px' />"
+            )
+        else:
+            return "(No image)"
+
+    image_preview.short_description = "Preview"  # type: ignore[attr-defined]
 
 
 @register(ProductItem)
