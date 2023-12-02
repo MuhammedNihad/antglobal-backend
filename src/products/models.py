@@ -192,7 +192,7 @@ class ProductImage(BaseModel, Model):  # type: ignore
     )
 
     # fields
-    images = ImageField(
+    image = ImageField(
         upload_to="uploads/product-images/",
         help_text=_("Upload the image for the product."),
     )

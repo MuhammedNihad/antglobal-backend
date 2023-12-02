@@ -41,9 +41,9 @@ class ProductImageInline(TabularInline):  # type: ignore
             str: An HTML string containing an image tag displaying the image preview,
             or a string indicating the absence of an image if 'obj.images' is empty.
         """
-        if obj.images:
+        if obj.image:
             return format_html(
-                f"<img src='{obj.images.url}' style='object-fit:contain; max-width:200px; max-height:200px' />"
+                f"<img src='{obj.image.url}' style='object-fit:contain; max-width:200px; max-height:200px' />"
             )
         else:
             return "(No image)"
