@@ -1,4 +1,5 @@
 from django.contrib.admin import TabularInline, register
+from django.forms import BaseInlineFormSet
 from django.utils.html import format_html
 
 from src.common.admin import BaseAdmin, SaveModelAdmin
@@ -23,12 +24,39 @@ class CategoryAdmin(BaseAdmin, SaveModelAdmin):  # type: ignore
     search_fields = ["name"]
 
 
+class ProductImageInlineFormSet(BaseInlineFormSet):  # type: ignore
+    """
+    Custom formset for managing product images in an inline form.
+
+    Overrides the add_fields method to set an initial display order
+    for each form field based on the provided index.
+
+    If the index is not None, it calculates the display order by adding
+    1 to the integer representation of the index and sets it as the initial
+    value for the 'display_order' field in the form.
+
+    Args:
+        form: The form to which fields are added.
+        index: The index of the form in the form set.
+
+    Attributes:
+        current_display_order (int): The calculated display order for the form.
+    """
+
+    def add_fields(self, form, index) -> None:  # type: ignore
+        if index is not None:
+            self.current_display_order = int(index) + 1
+            form.fields["display_order"].initial = self.current_display_order
+        super().add_fields(form, index)
+
+
 class ProductImageInline(TabularInline):  # type: ignore
     """
     Inline configuration for ProductImage in the admin interface.
     """
 
     model = ProductImage
+    formset = ProductImageInlineFormSet
     exclude = ["updated_by"]
     view_on_site = False
     readonly_fields = ("image_preview",)
