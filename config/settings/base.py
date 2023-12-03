@@ -33,6 +33,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "django_extensions",
+    "django_cleanup.apps.CleanupConfig",
 ]
 
 LOCAL_APPS = [
