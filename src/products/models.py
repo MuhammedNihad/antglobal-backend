@@ -7,7 +7,6 @@ from django.db.models import (
     ForeignKey,
     ImageField,
     Model,
-    OneToOneField,
     PositiveIntegerField,
     TextField,
 )
@@ -215,3 +214,7 @@ class ProductImage(BaseModel, Model):  # type: ignore
         verbose_name = "Product Images"
         verbose_name_plural = "Product Images"
         ordering = ["-display_order"]
+        unique_together = ("product", "display_order")
+
+    def __str__(self) -> str:
+        return f"Image of {self.product.name}"
