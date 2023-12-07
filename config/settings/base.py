@@ -97,6 +97,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = "accounts.CustomUser"
 
+# ADMIN
+# ------------------------------------------------------------------------------
+# Django Admin URL.
+ADMIN_URL = env("DJANGO_ADMIN_URL", default="admin/")
+# https://docs.djangoproject.com/en/dev/ref/settings/#admins
+ADMINS = env.list("ADMINS")
+# https://docs.djangoproject.com/en/dev/ref/settings/#managers
+MANAGERS = ADMINS
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
