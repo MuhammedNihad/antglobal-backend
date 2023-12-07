@@ -73,8 +73,7 @@ class ProductImageInline(TabularInline):  # type: ignore
             return format_html(
                 f"<img src='{obj.image.url}' style='object-fit:contain; max-width:200px; max-height:200px' />"
             )
-        else:
-            return "(No image)"
+        return "(No image)"
 
     image_preview.short_description = "Preview"  # type: ignore[attr-defined]
 
