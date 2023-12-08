@@ -69,6 +69,7 @@ class Category(BaseModel, Model):  # type: ignore
 
     class Meta:
         verbose_name_plural = "Categories"
+        ordering = ["-created"]
 
     def __str__(self) -> str:
         return f"{self.name}"
@@ -163,6 +164,7 @@ class ProductItem(BaseModel, Model):  # type: ignore
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Product Items"
+        ordering = ["-created"]
 
     def __str__(self) -> str:
         return f"{self.name} - {self.category.name}"
