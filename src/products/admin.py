@@ -106,6 +106,9 @@ class ProductItemAdmin(BaseAdmin, SaveModelAdmin):  # type: ignore
     list_display = [
         "name",
         "category",
+        "is_published",
+        "is_new_arrival",
+        "is_featured",
         "created_by",
         "updated_by",
         "created",
