@@ -24,8 +24,18 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# API URLS
+urlpatterns += [
+    # API base url
+    path("api/v1/", include("config.api_router")),
+    # API login URLs for the browsable API
+    path(
+        "api-auth/", include("rest_framework.urls", namespace="rest_framework")
+    ),
+]
+
 if settings.DEBUG:
-    # Appends Django Debug Toolbar to urlpatterns in developement environment
+    # Appends Django Debug Toolbar to urlpatterns in development environment
     if "debug_toolbar" in settings.INSTALLED_APPS:
         import debug_toolbar
 
