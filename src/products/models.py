@@ -16,7 +16,7 @@ from django_extensions.db.fields import AutoSlugField
 
 from src.common.models import BaseModel
 
-from .managers import ProductItemQueryset
+from .managers import ProductImageQuerySet, ProductItemQueryset
 
 
 class Category(BaseModel, Model):  # type: ignore
@@ -211,6 +211,8 @@ class ProductImage(BaseModel, Model):  # type: ignore
             "Specifies the preferred order for displaying the product image."
         ),
     )
+
+    objects = ProductImageQuerySet().as_manager()  # type: ignore
 
     class Meta:
         verbose_name = "Product Images"

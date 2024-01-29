@@ -41,3 +41,16 @@ class ProductItemQueryset(QuerySet[T_co]):
         Returns a queryset containing published products marked as new arrivals.
         """
         return self.published().filter(is_new_arrival=True)
+
+
+class ProductImageQuerySet(QuerySet[T_co]):
+    """
+    Custom queryset for the ProductImage model, providing specialized methods for querying product images.
+    """
+
+    def get_first_image(self) -> QuerySet[T_co]:
+        """
+        This method filters the queryset to retrieve images with a display order of 1,
+        which can be typically represents the primary or default image for a product.
+        """
+        return self.filter(display_order=1)
