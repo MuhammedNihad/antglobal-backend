@@ -44,3 +44,18 @@ class ProductItemSerializer(ModelSerializer):  # type:ignore
 
         model = ProductItem
         fields = ["slug", "name", "description", "images"]
+
+
+class ProductItemListSerializer(ProductItemSerializer):
+    """
+    Extends ProductItemSerializer to list product items and include a single image suitable for use
+    as a thumbnail.
+
+    Attributes:
+        images (ProductImageSerializer): Utilizes the custom manager method 'get_first_image()' to retrieve
+        only the image with 'display_order=1' for use as the thumbnail or single image of a product.
+    """
+
+    images = ProductImageSerializer(
+        many=True, read_only=True, source="images.get_first_image"
+    )
