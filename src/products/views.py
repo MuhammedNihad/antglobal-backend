@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ReadOnlyModelViewSet
 
-# Create your views here.
+from .models import ProductItem
+from .serializers import ProductItemSerializer
+
+
+class ProductReadOnlyViewSet(ReadOnlyModelViewSet):  # type: ignore
+    queryset = ProductItem.objects.published()
+    serializer_class = ProductItemSerializer
+    lookup_field = "slug"
