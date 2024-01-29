@@ -31,7 +31,6 @@ warn_unused_ignores = true
 warn_redundant_casts = true
 warn_unused_configs = true
 
-
 [[tool.mypy.overrides]]
 # Django migrations should not produce any errors:
 module = "*.migrations.*"

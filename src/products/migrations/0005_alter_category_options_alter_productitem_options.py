@@ -4,18 +4,24 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('products', '0004_alter_productimage_unique_together'),
+        ("products", "0004_alter_productimage_unique_together"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='category',
-            options={'ordering': ['-created'], 'verbose_name_plural': 'Categories'},
+            name="category",
+            options={
+                "ordering": ["-created"],
+                "verbose_name_plural": "Categories",
+            },
         ),
         migrations.AlterModelOptions(
-            name='productitem',
-            options={'ordering': ['-created'], 'verbose_name': 'Product', 'verbose_name_plural': 'Product Items'},
+            name="productitem",
+            options={
+                "ordering": ["-created"],
+                "verbose_name": "Product",
+                "verbose_name_plural": "Product Items",
+            },
         ),
     ]
